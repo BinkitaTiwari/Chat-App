@@ -1,4 +1,4 @@
-const http = require('http');
+const http = require('https');
 const express = require('express');
 const socketio = require('socket.io');
 const cors = require('cors');
@@ -11,8 +11,16 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
+
 app.use(cors());
+app.all('/', function(req, res, next) {
+  console.log("all session")
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next()
+});
 app.use(router);
+
 
 io.on('connect', (socket) => {
   socket.on('join', ({ name, room }, callback) => {
