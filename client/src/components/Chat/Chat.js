@@ -21,8 +21,8 @@ const Chat = ({ location }) => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const[showEmojiPicker,setshowEmojiPicker]=useState(false);
-  //const ENDPOINT = 'https://project-chat-application.herokuapp.com/';
-  const ENDPOINT = 'https://chattt-ap.herokuapp.com/';
+  const ENDPOINT = 'https://chattt-ap.herokuapp.com/'
+  //const ENDPOINT = 'localhost:5000';
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
